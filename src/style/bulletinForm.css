@@ -1,0 +1,31 @@
+.formContainer {
+  float: left;
+  margin: auto;
+  width: 50%;
+}
+
+.bulletinForm {
+  padding: 2.5rem 2rem;
+}
+
+.bulletinForm__Entry {
+  margin-bottom: 1rem;
+  line-height: 2rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bulletinForm__Input {
+  width: 100%;
+}
+
+.bulletinForm__Buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+  line-height: 2rem;
+}

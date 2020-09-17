@@ -1,0 +1,9 @@
+.bulletinList {
+  float: left;
+  margin: auto;
+  width: 50%;
+}
+
+.bulletinTable {
+  padding: 1rem 0.5rem;
+}

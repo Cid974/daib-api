@@ -1,11 +1,16 @@
 import React from "react";
 import "./App.css";
-import BulletinList from "./components/bulletinList";
+import Home from "./page/Home";
 
 function App() {
+  //   const [state, dispatch] = useReducer(bulletinReducer, initialState);
+
   return (
     <div className="App">
-      <BulletinList />
+      {/* <BulletinContext.Provider value={{ state, dispatch }}> */}
+      <h1 className="Title">Bulletin Board</h1>
+      <Home />
+      {/* </BulletinContext.Provider> */}
     </div>
   );
 }
