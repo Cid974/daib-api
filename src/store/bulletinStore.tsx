@@ -8,9 +8,9 @@ export interface IPost {
   __v: number;
 }
 
-interface IState {
+export interface IState {
   update: boolean;
-  list: Array<IPost>;
+  bulletins: Array<IPost>;
 }
 
 interface IContextProps {
@@ -22,24 +22,24 @@ export const BulletinContext = React.createContext({} as IContextProps);
 
 export const initialState = {
   update: true,
-  list: [],
+  bulletins: [],
 };
 
-export const NEW_BULLETIN = "NEW_BULLETIN";
 export const GET_BULLETINS = "GET_BULLETINS";
+export const ADD_BULLETIN = "ADD_BULLETIN";
 
 export function bulletinReducer(state: any, action: any) {
-  switch (action.name) {
-    case NEW_BULLETIN:
+  switch (action.type) {
+    case GET_BULLETINS:
       return {
         ...state,
         update: action.payload.update,
+        bulletins: action.payload.bulletins,
       };
-    case GET_BULLETINS:
-      console.log(action.payload.list);
+    case ADD_BULLETIN:
       return {
+        ...state,
         update: action.payload.update,
-        list: action.payload.list,
       };
     default:
       return initialState;

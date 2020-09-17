@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, /* useEffect,*/ useState } from "react";
 
 import "../style/bulletinList.css";
 import {
@@ -11,7 +11,7 @@ import {
   TablePagination,
   TableRow,
 } from "@material-ui/core";
-import { IPost } from "../store/bulletinStore";
+import { BulletinContext, IPost } from "../store/bulletinStore";
 
 type ListProps = {
   list: Array<IPost>;
@@ -20,6 +20,8 @@ type ListProps = {
 const BulletinList = (props: ListProps) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const data = useContext(BulletinContext);
+  const { state } = data;
   const { list } = props;
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -35,6 +37,8 @@ const BulletinList = (props: ListProps) => {
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, list.length - page * rowsPerPage);
+
+  console.log(state);
 
   return (
     <div className="bulletinList">

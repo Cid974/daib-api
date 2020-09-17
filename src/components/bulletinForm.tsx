@@ -6,7 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { token } from "../utils/token";
 
 import "../style/bulletinForm.css";
-import { BulletinContext, NEW_BULLETIN } from "../store/bulletinStore";
+import { BulletinContext, ADD_BULLETIN } from "../store/bulletinStore";
 
 const BulletinForm = () => {
   const data = useContext(BulletinContext);
@@ -40,10 +40,17 @@ const BulletinForm = () => {
         }
       );
       if (result.status === 200) {
-        dispatch({ type: NEW_BULLETIN, payload: { update: true } });
+        alert("The post was successfully submitted!");
+        setNickname("");
+        setContent("");
+        dispatch({ type: ADD_BULLETIN, payload: { update: true } });
       }
     } catch (error) {
-      console.log(error);
+      alert(
+        "An error has occured. Make sure you wrote a nickname and a content, or that your token is valid."
+      );
+      setNickname("");
+      setContent("");
     }
   };
 
@@ -52,6 +59,7 @@ const BulletinForm = () => {
       <form className="bulletinForm" onSubmit={(e) => handleSubmit(e)}>
         <div className="bulletinForm__Entry">
           <TextField
+            required
             className="bulletinForm__Input"
             variant="outlined"
             label="Nickname"
@@ -61,6 +69,7 @@ const BulletinForm = () => {
         </div>
         <div className="bulletinForm__Entry">
           <TextField
+            required
             className="bulletinForm__Input"
             variant="outlined"
             label="Content"
